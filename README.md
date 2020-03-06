@@ -11,3 +11,7 @@ This application will:
 python3
 pyqt5
 ```
+
+# USAGE
+`python main.py examples/watchlist`
+`watchlist` is a file which contains the desired ls-tc.de links to be displayed. Each link is separated by newline.
