@@ -15,3 +15,7 @@ pyqt5
 # USAGE
 `python main.py examples/watchlist`
 `watchlist` is a file which contains the desired ls-tc.de links to be displayed. Each link is separated by newline.
+
+# EXAMPLE
+![screenshot](examples/screenshot.png)
+This screenshot shows how the app look like on 2 different monitors with different resolutions.
