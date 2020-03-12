@@ -51,6 +51,16 @@ class LstcGridViewer(QtWidgets.QWidget):
         if len(self.webEngineViews) >= maxEntries :
             raise RuntimeError("This app only supports maximum {} views.".format(maxEntries))
 
+        url = url.strip()
+
+        if len(url) == 0:
+            return
+
+        # Check if the url is from ls-tc.de
+        if LstcGridViewer.LSTC_DOMAIN not in url:
+            print("WARNING: {} does not belong to ls-tc.de domain. This url will be ignored.".format(url))
+            return
+
         webEngineView = QtWebEngineWidgets.QWebEngineView(self)
         webEngineView.setUrl(QtCore.QUrl(url))
         webEngineView.settings().setAttribute(QtWebEngineWidgets.QWebEngineSettings.WebAttribute.ShowScrollBars, False)
@@ -61,10 +71,6 @@ class LstcGridViewer(QtWidgets.QWidget):
         self.gridLayout = QtWidgets.QGridLayout(self)
 
         for url in urls:
-            # Check if the url is from ls-tc.de
-            if LstcGridViewer.LSTC_DOMAIN not in url:
-                raise RuntimeError("{} does not belong to ls-tc.de domain".format(url))
-
             self._addUrl(url)
 
         for row in range(0, LstcGridViewer.MAX_ROW):
